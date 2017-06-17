@@ -1,0 +1,295 @@
+<html>
+ 
+  <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
+  <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.4.0/dist/altspace.js"></script>
+
+  <a-scene altspace="fullspace: true" sync-system="author: greeny3ny; app: dancedance">
+
+	<!-- removing this makes it not work?? -->
+    <a-assets>
+	  <a-asset-item id="songs" src="https://rawgit.com/greeny3ny/VRDance/master/songs/songs.json"></a-asset-item>
+    </a-assets>
+
+	<a-mixin id="parent-to-chest" position="0 0 0" n-skeleton-parent="part: spine;" scale="1.1 1 1.1" sync sync-n-skeleton-parent></a-mixin>
+	<a-box id="box4" hancol="box_id:4;" n-mesh-collider="type:hologram" color="red" position="0 1.5 -0.7" scale="0.25 0.25 1" opacity="0.2">
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	
+	
+	<a-box id="box5" hancol="box_id:5;" n-mesh-collider="type:hologram" color="red" position="0.5 1.5 -0.7" scale="0.25 0.25 1" opacity="0.2">
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	
+	<a-box id="box3" hancol="box_id:3;" n-mesh-collider="type:hologram" color="red" position="-0.5 1.5 -0.7" scale="0.25 0.25 1" opacity="0.2">
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	
+	<a-box id="box1" hancol="box_id:1;" n-mesh-collider="type:hologram" color="red" position="0 2 -0.7" scale="0.25 0.25 1" opacity="0.2">
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	
+	
+	<a-box id="box2" hancol="box_id:2;" n-mesh-collider="type:hologram" color="red" position="0.5 2 -0.7" scale="0.25 0.25 1" opacity="0.2">
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	<a-box id="box0" hancol="box_id:0;" color="green" position="-0.5 2 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	
+	<a-box id="box7" hancol="box_id:7;" color="green" position="0 1 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	<a-box id="box8" hancol="box_id:8;" color="green" position="0.5 1 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	<a-box id="box6" hancol="box_id:6;" color="green" position="-0.5 1 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
+		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
+	</a-box>
+	
+	
+	
+	
+	
+
+
+  </a-scene>
+</html>
+
+<script>
+
+//read song from external file?
+
+var song1 = ["01", "12", "35", "78", "08", "74", "63", "01", "23", "28", "83", "74", "18", "48", "63", "00", "54", "99"];  //99 signals song end
+console.log(song1);
+
+var tick = setInterval(tick, 1000);
+
+var ticker = 0;
+
+var str;
+var s_str1;
+var s_str2;
+//runs every second
+function tick(){
+
+	str = song1[ticker];
+	s_str1 = str.substring(0,1);
+	s_str2 = str.substring(1);
+	console.log(s_str1 + " | "  + s_str2);
+
+	//console.log(song1[ticker]);
+	//console.log(ticker + " | " + (song1.length-1));
+	
+	//parse array input (where number represent boxes to hit)
+	
+	//set all colours to normal
+	blank();
+	getBoxNumbers(); //makes code cleaner
+	
+	
+	
+	ticker++;
+	
+	if (ticker > (song1.length-1)){
+		console.log("song ended");
+		//blank();
+		clearInterval(tick);
+	}
+
+}
+
+function blank(){
+
+	document.querySelector('#box0').emit('left');
+	document.querySelector('#box1').emit('left');
+	document.querySelector('#box2').emit('left');
+	document.querySelector('#box3').emit('left');
+	document.querySelector('#box4').emit('left');
+	document.querySelector('#box5').emit('left');
+	document.querySelector('#box6').emit('left');
+	document.querySelector('#box7').emit('left');
+	document.querySelector('#box8').emit('left');
+
+}
+
+//keeping clean code
+function getBoxNumbers(){
+
+switch(parseInt(s_str1)){
+		case 0:
+			document.querySelector('#box0').emit('touch'); 
+		break;
+		case 1:
+			document.querySelector('#box1').emit('touch'); 
+		break;
+		case 2:
+			document.querySelector('#box2').emit('touch'); 
+		break;
+		case 3:
+			document.querySelector('#box3').emit('touch'); 
+		break;
+		case 4:
+			document.querySelector('#box4').emit('touch'); 
+		break;
+		case 5:
+			document.querySelector('#box5').emit('touch'); 
+		break;
+		case 6:
+			document.querySelector('#box6').emit('touch'); 
+		break;
+		case 7:
+			document.querySelector('#box7').emit('touch'); 
+		break;
+		case 8:
+			document.querySelector('#box8').emit('touch'); 
+		break;
+	 }//end switch
+	 
+	 switch(parseInt(s_str2)){
+		case 0:
+			document.querySelector('#box0').emit('touch'); 
+		break;
+		case 1:
+			document.querySelector('#box1').emit('touch'); 
+		break;
+		case 2:
+			document.querySelector('#box2').emit('touch'); 
+		break;
+		case 3:
+			document.querySelector('#box3').emit('touch'); 
+		break;
+		case 4:
+			document.querySelector('#box4').emit('touch'); 
+		break;
+		case 5:
+			document.querySelector('#box5').emit('touch'); 
+		break;
+		case 6:
+			document.querySelector('#box6').emit('touch'); 
+		break;
+		case 7:
+			document.querySelector('#box7').emit('touch'); 
+		break;
+		case 8:
+			document.querySelector('#box8').emit('touch'); 
+		break;
+		case 9:
+			console.log("song end");
+			break;
+	 }//end switch
+
+}
+
+AFRAME.registerComponent('hancol',
+                         {
+  schema: 
+  { 
+    jointCubeSize: {
+      type: 'float',
+      default: 0.15
+    },
+	box_id:
+	{
+		type: 'int'
+	}
+  },
+
+  init: function ()
+  {
+    var self = this;
+    var object = self.el.object3D;
+
+    object.addBehavior(new altspace.utilities.behaviors.JointCollisionEvents
+                       ({
+
+      joints: [['Hand', 'Right', 0],['Hand', 'Left', 0]], jointCubeSize: self.data.jointCubeSize
+
+    }));
+
+    object.addEventListener('jointcollisionenter', handleJoin);		
+    function handleJoin(event)
+    {
+      console.log('hand entered ' + self.data.box_id);
+     
+	 switch(self.data.box_id){
+		case 0:
+			document.querySelector('#box0').emit('touch'); 
+		break;
+		case 1:
+			document.querySelector('#box1').emit('touch'); 
+		break;
+		case 2:
+			document.querySelector('#box2').emit('touch'); 
+		break;
+		case 3:
+			document.querySelector('#box3').emit('touch'); 
+		break;
+		case 4:
+			document.querySelector('#box4').emit('touch'); 
+		break;
+		case 5:
+			document.querySelector('#box5').emit('touch');	
+		break;
+		case 6:
+			document.querySelector('#box6').emit('touch'); 
+		break;
+		case 7:
+			document.querySelector('#box7').emit('touch'); 
+		break;
+		case 8:
+			document.querySelector('#box8').emit('touch'); 
+		break;
+	 }//end switch
+	 
+    }
+
+
+    object.addEventListener('jointcollisionleave', handleLeave);
+    function handleLeave(event)
+    {
+      console.log('hand exited ' + self.data.box_id);
+
+	  switch(self.data.box_id){
+		case 0:
+			document.querySelector('#box0').emit('left'); 
+		break;
+		case 1:
+			document.querySelector('#box1').emit('left'); 
+		break;
+		case 2:
+			document.querySelector('#box2').emit('left'); 
+		break;
+		case 3:
+			document.querySelector('#box3').emit('left'); 
+		break;
+		case 4:
+			document.querySelector('#box4').emit('left'); 
+		break;
+		case 5:
+			document.querySelector('#box5').emit('left'); 
+		break;
+		case 6:
+			document.querySelector('#box6').emit('left'); 
+		break;
+		case 7:
+			document.querySelector('#box7').emit('left'); 
+		break;
+		case 8:
+			document.querySelector('#box8').emit('left'); 
+		break;
+	 }//end switch
+     
+
+    }
+  }
+});
+</script>
