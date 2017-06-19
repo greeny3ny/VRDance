@@ -1,9 +1,38 @@
 <html>
- 
-  <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
-  <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.4.0/dist/altspace.js"></script>
-
-  <a-scene altspace="fullspace: true" sync-system="author: greeny3ny; app: dancedance">
+	<a-head>
+		<script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
+		<script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.4.0/dist/altspace.js"></script>
+		
+		
+		<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+		<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDOFrX4t3WEVd2PHnqXg42ZySX-6OkkXGk",
+    authDomain: "altspace-dance.firebaseapp.com",
+    databaseURL: "https://altspace-dance.firebaseio.com",
+    projectId: "altspace-dance",
+    storageBucket: "",
+    messagingSenderId: "674202394919"
+  };
+  firebase.initializeApp(config);
+	</script>
+	<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDOFrX4t3WEVd2PHnqXg42ZySX-6OkkXGk",
+    authDomain: "altspace-dance.firebaseapp.com",
+    databaseURL: "https://altspace-dance.firebaseio.com",
+    projectId: "altspace-dance",
+    storageBucket: "",
+    messagingSenderId: "674202394919"
+  };
+  firebase.initializeApp(config);
+	</script>
+	</a-head>
+  
+  <body>
+	<a-scene altspace="fullspace: true" sync-system="author: greeny3ny; app: dancedance">
 
 	<!-- removing this makes it not work?? -->
     <a-assets>
@@ -17,40 +46,40 @@
 	</a-box>
 	
 	
-	<a-box id="box5" hancol="box_id:5;" n-mesh-collider="type:hologram" color="red" position="0.5 1.5 -0.7" scale="0.25 0.25 1" opacity="0.2">
+	<a-box id="box5" hancol="box_id:5;" n-mesh-collider="type:hologram" color="red" position="0.5 1.5 -0.7" scale="0.25 0.25 1" opacity="0.1">
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
 	
-	<a-box id="box3" hancol="box_id:3;" n-mesh-collider="type:hologram" color="red" position="-0.5 1.5 -0.7" scale="0.25 0.25 1" opacity="0.2">
+	<a-box id="box3" hancol="box_id:3;" n-mesh-collider="type:hologram" color="red" position="-0.5 1.5 -0.7" scale="0.25 0.25 1" opacity="0.1">
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
 	
-	<a-box id="box1" hancol="box_id:1;" n-mesh-collider="type:hologram" color="red" position="0 2 -0.7" scale="0.25 0.25 1" opacity="0.2">
+	<a-box id="box1" hancol="box_id:1;" n-mesh-collider="type:hologram" color="red" position="0 2 -0.7" scale="0.25 0.25 1" opacity="0.1">
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
 	
 	
-	<a-box id="box2" hancol="box_id:2;" n-mesh-collider="type:hologram" color="red" position="0.5 2 -0.7" scale="0.25 0.25 1" opacity="0.2">
+	<a-box id="box2" hancol="box_id:2;" n-mesh-collider="type:hologram" color="red" position="0.5 2 -0.7" scale="0.25 0.25 1" opacity="0.1">
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
-	<a-box id="box0" hancol="box_id:0;" color="green" position="-0.5 2 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+	<a-box id="box0" hancol="box_id:0;" color="green" position="-0.5 2 -0.7" scale="0.25 0.25 1" opacity="0.1" >
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
 	
-	<a-box id="box7" hancol="box_id:7;" color="green" position="0 1 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+	<a-box id="box7" hancol="box_id:7;" color="green" position="0 1 -0.7" scale="0.25 0.25 1" opacity="0.1" >
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
-	<a-box id="box8" hancol="box_id:8;" color="green" position="0.5 1 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+	<a-box id="box8" hancol="box_id:8;" color="green" position="0.5 1 -0.7" scale="0.25 0.25 1" opacity="0.1" >
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
-	<a-box id="box6" hancol="box_id:6;" color="green" position="-0.5 1 -0.7" scale="0.25 0.25 1" opacity="0.2" >
+	<a-box id="box6" hancol="box_id:6;" color="green" position="-0.5 1 -0.7" scale="0.25 0.25 1" opacity="0.1" >
 		<a-animation attribute="material.color" begin="touch" from="red" to="yellow" dur="1"></a-animation>
 		<a-animation attribute="material.color" begin="left" from="yellow" to="red" dur="1"></a-animation>
 	</a-box>
@@ -59,40 +88,122 @@
 	<a-entity id="tempDisplay" position='0 1 -5' rotation='0 0 0' n-text='text: test ; fontSize:3; width:1;'></a-entity>
 	
 	<a-entity id="hitDisplay" position='0 2 -5' rotation='0 0 0' n-text='text: test ; fontSize:3; width:1;'></a-entity>
-	<a-entity id="statsDisplay" position='0 3 -5' rotation='0 0 0' n-text='text:test; fontSize:3; width:1;'></a-entity>
+	<a-entity id="statsDisplay" position='0 4 -5' rotation='0 0 0' n-text='text:test; fontSize:3; width:1;'></a-entity>
+	<a-entity id="statsDisplay2" position='0 3 -5' rotation='0 0 0' n-text='text:test; fontSize:3; width:1;'></a-entity>
 	
-	<a-box id="test1" color="green" position="0 1 -6" scale="0.25 4 0.25" opacity="1" sync sync-transform>
-		<a-box color="red" position="0 0.5 0" scale="1 0.2 1"> </a-box>
+	<a-box id="handDisplay1" color="green" position="0 1 -6" scale="0.25 4 0.25" opacity="0.5" sync sync-transform>
+		<a-box color="red" position="0 0.5 0" scale="1.1 0.2 1.1"> </a-box>
 	</a-box>
-	<a-box id="test2" color="green" position="0 1 -6" scale="0.25 4 0.25" opacity="1" sync sync-transform>
-		<a-box color="red" position="0 0.5 0" scale="1 0.2 1"> </a-box>
+	<a-box id="handDisplay2" color="green" position="0 1 -6" scale="0.25 4 0.25" opacity="0.5" sync sync-transform>
+		<a-box color="red" position="0 0.5 0" scale="1.1 0.2 1.1"> </a-box>
 	</a-box>
+	
+	<a-box id="test1" color="blue" position="0 1 -10" scale="0.25 4 0.25" opacity="1" sync sync-transform>
+		<a-box color="red" position="0 0.5 0" scale="1.1 0.2 1.1"> </a-box>
+		<a-animation attribute="position" begin="nextNote1" from="0 1 -10" to="0 1 -6" repeat="0" dur="900" easing="linear"></a-animation>
+	</a-box>
+	<a-box id="test2" color="blue" position="0 1 -10" scale="0.25 4 0.25" opacity="1" sync sync-transform>
+		<a-box color="red" position="0 0.5 0" scale="1.1 0.2 1.1"> </a-box>
+		<a-animation attribute="position" begin="nextNote1" from="0 1 -10" to="0 1 -6" repeat="0" dur="900" easing="linear"></a-animation>
+	</a-box>
+	
+	<a-plane color="black" position="0 1 -9" scale="10 10 1" rotation="0 0 0"><a-plane>
 
-  </a-scene>
+	</a-scene>
+  </body>
 </html>
 
+
 <script>
+
+console.log("Version 0.2");
+
+
+var fbDanceRef = new Firebase("https://altspace-dance.firebaseio.com/");
+var fbMasterRef = new Firebase("https://greeny-masterdatabase-altspace.firebaseio.com/");
+
+var username;
+var userID;
+var moderator;
+var displayname;
+
+//update info in master database
+altspace.getUser().then(function(userInfo) {
+	var dataRequest = (THREE.FileLoader ? new THREE.FileLoader() : new THREE.XHRLoader());
+	dataRequest.setWithCredentials(true);
+	dataRequest.load('https://account.altvr.com/api/v1/users/' + userInfo.userId, onLoaded, undefined, undefined);
+	function onLoaded(obj) {
+		console.log('JSON thing:');
+		console.log(JSON.parse(obj));
+		username = JSON.parse(obj).users[0].username;
+		userID = JSON.parse(obj).users[0].user_id;
+		moderator = JSON.parse(obj).users[0].admin;
+		displayname = JSON.parse(obj).users[0].display_name;
+
+		console.log(username + " " + userID + " " + moderator + " " + displayname);
+
+		
+		
+		fbMasterRef.child("users").once('value', function (snapshot) {
+			console.log('Snapshot function worked!');
+			console.log(snapshot.child(username).child('Username').val());
+
+			var usernameSnapshot = snapshot.child(username).child('Username').val();
+
+			if (snapshot.exists() && usernameSnapshot == username) {
+				console.log('Snapshot exists!');
+
+			} else if (snapshot.exists() && usernameSnapshot != username && usernameSnapshot != null) {
+				console.log('Snapshot exists, but user has changed their username.');
+				fbMasterRef.child("users").child(username).child('Username').update(username);
+
+			} else {
+				console.log('Snapshot does not exist; creating one...');
+				console.log('Snapshot will be: ' + username + ', ' + userID + ', ' + moderator + '.');
+				fbMasterRef.child("users").child(username).set({'Moderator': moderator, 'User ID': userID, 'Username': username, 'Display Name': displayname}, function () {
+					console.log('Snapshot created!');
+				});
+			}
+
+		});
+		
+		
+		
+		altspace.getDocument().then(function (document) { document.position.set(100, 100, 100); document.rotation.set(0, 90, 0);});
+		console.log("loaded");
+	}
+}); 
+
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+//---------------------------------------------------------------
 
 var sim = new altspace.utilities.Simulation(); //simulation
 
 //read song from external file?
 
-var song1 = ["01", "12", "35", "78", "08", "74", "63", "01", "23", "28", "83", "74", "18", "48", "63", "00", "54", "99", "99"];  //99 signals pause
+var song1 = ["01", "12", "35", "78", "08", "74", "63", "01", "23", "28", "83", "74", "18", "48", "63", "09", "54", "99", "99"];  //99 signals pause
 //var song1 = ["99", "99", "01", "45", "99"];
-//var oneD_beau = ["99", "99", "46", "46", "46", "67", "67", "16", "16", "56", "68", "35", "68", "35", "44"]; //testing
 //var song1 = ["99", "00", "11", "22", "33", "44", "55", "66", "77", "88", "99"];
 
 console.log(song1);
 var songStarted = false;
 
-var tick = setInterval(tick, 1000);
+var tick = setInterval(tick, 1000); //easy mode - too slow for decent dances
+//var tick500 = setInterval(tick500, 500); //medium/hard mode 
 var tick200 = setInterval(tick200, 200);
 var ticker = 0;
 
-var songAhead;
 var song;
 var s_str1;
 var s_str2;
+
+var songAhead;
+var s_str1_Ahead;
+var s_str2_Ahead;
 
 var boxTouched = ["9", "9"];
 var hit = false; //did the user hit the box?
@@ -100,9 +211,16 @@ var hitCounter = 0;
 
 var counterUpdated = false; //used to make sure counter only updates once
 
+var highScore = 0;
 
 var oldRot1, oldRot2 = "0 0 0";
 var newRot1, newRot2;
+
+//refactor?
+var oldRot3, oldRot3 = "0 0 0";
+var newRot3, newRot4;
+
+//
 //runs every second
 function tick(){
 	
@@ -117,10 +235,80 @@ function tick(){
 		
 		//stores current part of song?
 		song = song1[ticker];
+		//document.querySelector('#handDisplay1').emit('nextMove');
+		//document.querySelector('#handDisplay2').emit('nextMove'); //should hopefully sync stuff
+		s_str1 = song.substring(0,1);
+		s_str2 = song.substring(1);
+		//console.log(s_str1 + " | "  + s_str2);
+
+		songAhead = song1[ticker+1]; //remove this possibly
+		s_str1_Ahead = songAhead.substring(0,1);
+		s_str2_Ahead = songAhead.substring(1);
+		//console.log(song1[ticker]);
+		//console.log(ticker + " | " + (song1.length-1));
+		//console.log(s_str1_Ahead + " | " + s_str1);
+		
 	
-		songAhead = song1[ticker]; //remove this possibly
-		s_str1 = songAhead.substring(0,1);
-		s_str2 = songAhead.substring(1);
+		//parse array input (where number represent boxes to hit)
+		document.querySelector('#test1').emit('nextNote1');
+		document.querySelector('#test2').emit('nextNote1');
+		
+		//set all colours to normal
+		//blank();
+		getBoxNumbers(); //makes code cleaner
+		getBoxNumbers2(); //remove this later?
+	
+		ticker++;
+		
+		//console.log("ticker: " + ticker + " | songlength-1 : " + (song1.length-1));
+	
+		if (ticker >= (song1.length-1)){
+			songStarted = false;
+			ticker = 0;
+			console.log("song ended");
+			console.log("You hit " + hitCounter + "/" + (song1.length-1) + " moves");
+			readDatabase(); //must read old HS before update
+			updateDatabase(); //update database
+			console.log(hitCounter);
+			document.querySelector('#statsDisplay').setAttribute('n-text', "text:" + "You hit " + hitCounter + "/" + (song1.length-1) + " moves");
+		
+			if (hitCounter > highScore){
+				console.log("highscore!");
+				document.querySelector('#statsDisplay2').setAttribute('n-text', "text: Congrats! You set a new high score of " + highScore);
+			} else {
+			
+				document.querySelector('#statsDisplay2').setAttribute('n-text', "text: Your highscore is " + highScore);
+			
+			}
+			
+			
+		}
+	
+	}
+	
+	
+
+}//end tick function
+
+//0.5s tick
+function tick500(){
+
+	if (songStarted == true){
+	
+		//show box to hit
+		document.querySelector('#tempDisplay').setAttribute('n-text', "text:" + song1[(ticker)]);
+		
+		//reset some variables
+		hit = false; //sets hit to false
+		counterUpdated = false;
+		
+		//stores current part of song?
+		song = song1[ticker];
+		document.querySelector('#handDisplay1').emit('nextMove');
+		document.querySelector('#handDisplay2').emit('nextMove');
+		//songAhead = song1[ticker]; //remove this possibly
+		s_str1 = song.substring(0,1);
+		s_str2 = song.substring(1);
 		console.log(s_str1 + " | "  + s_str2);
 
 		//console.log(song1[ticker]);
@@ -133,6 +321,7 @@ function tick(){
 		//set all colours to normal
 		//blank();
 		getBoxNumbers(); //makes code cleaner
+		getBoxNumbers2(); //remove this later on
 	
 		ticker++;
 	
@@ -148,17 +337,19 @@ function tick(){
 			
 		}
 	
-	}
-	
-	
+	}	
 
-}//end tick function
+}
 
 function tick200(){
 
 	if (songStarted == true){
+	
+	
+		try{
+	
 		if ((song.includes(boxTouched[0]) && song.includes(boxTouched[1])) || hit==true){
-			console.log("hit");
+			//console.log("hit");
 			hit = true;
 			
 			//makes sure counter only gets updated once
@@ -169,12 +360,15 @@ function tick200(){
 			
 			document.querySelector('#hitDisplay').setAttribute('n-text', 'text: hit');
 		} else { 
-			console.log("miss");
+			//console.log("miss");
 			document.querySelector('#hitDisplay').setAttribute('n-text', 'text: miss');
-		}
-	}
+		}//----
+		
+		}catch(ex){}//end try catch
+		
+	}//end songstarted=true if
 	
-}
+}//end function tick200
 
 function blank(){
 
@@ -194,8 +388,10 @@ function blank(){
 function getBoxNumbers(){
 
 	//reset box scales
-	document.querySelector('#test1').setAttribute('scale', '0.25, 4, 0.25');
-	document.querySelector('#test2').setAttribute('scale', '0.25, 4, 0.25');
+	document.querySelector('#handDisplay1').setAttribute('scale', '0.25, 4, 0.25');
+	document.querySelector('#handDisplay2').setAttribute('scale', '0.25, 4, 0.25');
+	
+	//document.querySelector('#test1').setAttribute('scale', '0.25, 4, 0.25');
 
 	switch(parseInt(s_str1)){
 		case 0:
@@ -215,26 +411,26 @@ function getBoxNumbers(){
 			newRot1 = "0 0 90";
 		break;
 		case 4:
-			//document.querySelector('#test1').setAttribute('position', "0 1.5 -6.7");
-			document.querySelector('#test1').setAttribute('scale', "0.25, 1, 0.25");
+			//document.querySelector('#handDisplay1').setAttribute('position', "0 1.5 -6.7");
+			document.querySelector('#handDisplay1').setAttribute('scale', "0.25, 0.25, 0.25");
 			
 			newRot1 ="0 0 0";
 			//idk how to do the rotation for this?
 		break;
 		case 5: 
-			//document.querySelector('#test1').setAttribute('position', "0.5 1.5 -6.7");
+			//document.querySelector('#handDisplay1').setAttribute('position', "0.5 1.5 -6.7");
 			newRot1 = "0 0 270";
 		break;
 		case 6:
-			//document.querySelector('#test1').setAttribute('position', "-0.5 1 -6.7");
+			//document.querySelector('#handDisplay1').setAttribute('position', "-0.5 1 -6.7");
 			newRot1 = "0 0 135";
 		break;
 		case 7:
-			//document.querySelector('#test1').setAttribute('position', "0 1 -6.7");
+			//document.querySelector('#handDisplay1').setAttribute('position', "0 1 -6.7");
 			newRot1 = "0 0 180";
 		break;
 		case 8:
-			//document.querySelector('#test1').setAttribute('position', "0.5 1 -6.7");
+			//document.querySelector('#handDisplay1').setAttribute('position', "0.5 1 -6.7");
 			newRot1 = "0 0 225";
 		break;
 		case 9:
@@ -243,46 +439,46 @@ function getBoxNumbers(){
 	 }//end switch
 	 
 	 //can be moved to end of switch?
-	document.querySelector('#test1').setAttribute('rotation', newRot1);
+	document.querySelector('#handDisplay1').setAttribute('rotation', newRot1);
 
 	oldRot1 = newRot1;
 	 
 	 switch(parseInt(s_str2)){
 		case 0: 
-			//document.querySelector('#test2').setAttribute('position', "-0.5 2 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "-0.5 2 -6.7");
 			newRot2 = "0 0 45";
 		break;
 		case 1:
-			//cument.querySelector('#test2').setAttribute('position', "0 2 -6.7");
+			//cument.querySelector('#handDisplay2').setAttribute('position', "0 2 -6.7");
 			newRot2 = "0 0 0";
 		break;
 		case 2:
-			//document.querySelector('#test2').setAttribute('position', "0.5 2 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "0.5 2 -6.7");
 			newRot2 = "0 0 315";
 		break;
 		case 3:
-			//document.querySelector('#test2').setAttribute('position', "-0.5 1.5 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "-0.5 1.5 -6.7");
 			newRot2 = "0 0 90";
 		break;
 		case 4: 
-			//document.querySelector('#test2').setAttribute('position', "0 1.5 -6.7");
-			document.querySelector('#test2').setAttribute('scale', "0.25, 1, 0.25");
+			//document.querySelector('#handDisplay2').setAttribute('position', "0 1.5 -6.7");
+			document.querySelector('#handDisplay2').setAttribute('scale', "0.25, 0.25, 0.25");
 			newRot2 ="0 0 0";
 		break;
 		case 5:
-			//document.querySelector('#test2').setAttribute('position', "0.5 1.5 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "0.5 1.5 -6.7");
 			newRot2 = "0 0 270";
 		break;
 		case 6:
-			//document.querySelector('#test2').setAttribute('position', "-0.5 1 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "-0.5 1 -6.7");
 			newRot2 = "0 0 135";
 		break;
 		case 7:
-			//document.querySelector('#test2').setAttribute('position', "0 1 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "0 1 -6.7");
 			newRot2 = "0 0 180";
 		break;
 		case 8:
-			//document.querySelector('#test2').setAttribute('position', "0.5 1 -6.7");
+			//document.querySelector('#handDisplay2').setAttribute('position', "0.5 1 -6.7");
 			newRot2 = "0 0 225";
 		break;
 		case 9:
@@ -291,11 +487,167 @@ function getBoxNumbers(){
 	 }//end switch
 
 	  //can be moved to end of switch?
-	document.querySelector('#test2').setAttribute('rotation', newRot2);
+	document.querySelector('#handDisplay2').setAttribute('rotation', newRot2);
 
 	oldRot2 = newRot2;
 	 
 }
+
+//can shorten this and merge with other function
+function getBoxNumbers2(){
+
+	//console.log("test");
+
+//reset box scales
+	document.querySelector('#test1').setAttribute('scale', '0.25, 4, 0.25');
+	//document.querySelector('#handDisplay2').setAttribute('scale', '0.25, 4, 0.25');
+	
+	//document.querySelector('#test1').setAttribute('scale', '0.25, 4, 0.25');
+
+	switch(parseInt(s_str1_Ahead)){
+		case 0:
+		
+			newRot3 = "0 0 45";
+			//console.log("test1");
+			
+		break;
+		case 1:
+	
+			newRot3 = "0 0 0";
+			
+		break;
+		case 2:
+			newRot3 = "0 0 -45";
+		break;
+		case 3:
+			newRot3 = "0 0 90";
+		break;
+		case 4:
+			//document.querySelector('#handDisplay1').setAttribute('position', "0 1.5 -6.7");
+			document.querySelector('#test1').setAttribute('scale', "0.25, 0.25, 0.25");
+			
+			newRot3 ="0 0 0";
+			//idk how to do the rotation for this?
+		break;
+		case 5: 
+			//document.querySelector('#handDisplay1').setAttribute('position', "0.5 1.5 -6.7");
+			newRot3 = "0 0 270";
+		break;
+		case 6:
+			//document.querySelector('#handDisplay1').setAttribute('position', "-0.5 1 -6.7");
+			newRot3 = "0 0 135";
+		break;
+		case 7:
+			//document.querySelector('#handDisplay1').setAttribute('position', "0 1 -6.7");
+			newRot3 = "0 0 180";
+		break;
+		case 8:
+			//document.querySelector('#handDisplay1').setAttribute('position', "0.5 1 -6.7");
+			newRot3 = "0 0 225";
+		break;
+		case 9:
+			//console.log("song end");
+		break;
+	 }//end switch
+	 
+	 //can be moved to end of switch?
+	document.querySelector('#test1').setAttribute('rotation', newRot3);
+
+	oldRot3 = newRot3;
+
+	 switch(parseInt(s_str2_Ahead)){
+		case 0: 
+			//document.querySelector('#handDisplay2').setAttribute('position', "-0.5 2 -6.7");
+			newRot4 = "0 0 45";
+		break;
+		case 1:
+			//cument.querySelector('#handDisplay2').setAttribute('position', "0 2 -6.7");
+			newRot4 = "0 0 0";
+		break;
+		case 2:
+			//document.querySelector('#handDisplay2').setAttribute('position', "0.5 2 -6.7");
+			newRot4 = "0 0 315";
+		break;
+		case 3:
+			//document.querySelector('#handDisplay2').setAttribute('position', "-0.5 1.5 -6.7");
+			newRot4 = "0 0 90";
+		break;
+		case 4: 
+			//document.querySelector('#handDisplay2').setAttribute('position', "0 1.5 -6.7");
+			document.querySelector('#handDisplay2').setAttribute('scale', "0.25, 0.25, 0.25");
+			newRot4 ="0 0 0";
+		break;
+		case 5:
+			//document.querySelector('#handDisplay2').setAttribute('position', "0.5 1.5 -6.7");
+			newRot4 = "0 0 270";
+		break;
+		case 6:
+			//document.querySelector('#handDisplay2').setAttribute('position', "-0.5 1 -6.7");
+			newRot4 = "0 0 135";
+		break;
+		case 7:
+			//document.querySelector('#handDisplay2').setAttribute('position', "0 1 -6.7");
+			newRot4 = "0 0 180";
+		break;
+		case 8:
+			//document.querySelector('#handDisplay2').setAttribute('position', "0.5 1 -6.7");
+			newRot4 = "0 0 225";
+		break;
+		case 9:
+			//console.log("song end");
+			break;
+	 }//end switch
+	
+	  //can be moved to end of switch?
+	document.querySelector('#test2').setAttribute('rotation', newRot4);
+
+	oldRot4 = newRot4;
+
+	//
+}
+
+function updateDatabase(){
+	
+	fbDanceRef.child("users").once('value', function (snapshot) {
+			console.log('Snapshot function worked!');
+			console.log(snapshot.child(username).child('Username').val());
+
+			var usernameSnapshot = snapshot.child(username).child('Username').val();
+
+			if (snapshot.exists() && usernameSnapshot == username) {
+				console.log('Snapshot exists!');
+
+			} else if (snapshot.exists() && usernameSnapshot != username && usernameSnapshot != null) {
+				console.log('Snapshot exists, but user has changed their username.');
+				fbDanceRef.child("users").child(username).child('Username').update(username);
+
+			} else {
+				console.log('Snapshot does not exist; creating one...');
+				console.log('Snapshot will be: ' + username + ', ' + userID + ', ' + moderator + '.');
+				fbDanceRef.child("users").child(username).set({'User ID': userID, 'Username': username, 'Score': "0"}, function () {
+					console.log('Snapshot created!');
+				});
+			}
+
+	});
+	
+	//fbDanceRef.child("users").child(username).child('Score').update(hitCounter);
+	fbDanceRef.child("users").child(username).child('Score').set(hitCounter); //updates database
+	
+	
+	
+	
+}
+
+function readDatabase(){
+
+	fbDanceRef.child("users").child(username).child('Score').on("value", function(snapshot) {
+		highScore = snapshot.val();
+		console.log("users highscore is : "+ highScore);
+	});
+
+}
+
 
 AFRAME.registerComponent('hancol',
                          {
