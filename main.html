@@ -116,7 +116,7 @@
 
 <script>
 
-console.log("Version 0.2.1.1");
+console.log("Version 0.2.1.3");
 
 
 var fbDanceRef = new Firebase("https://altspace-dance.firebaseio.com/");
@@ -167,7 +167,7 @@ altspace.getUser().then(function(userInfo) {
 
 		});
 		
-		
+		readHighscoreDB(); //read highscore of player when they load
 		
 		altspace.getDocument().then(function (document) { document.position.set(100, 100, 100); document.rotation.set(0, 90, 0);});
 		console.log("loaded");
@@ -190,14 +190,14 @@ var song1 = ["01", "12", "35", "78", "08", "74", "63", "01", "23", "28", "83", "
 //var song1 = ["99", "00", "11", "22", "33", "44", "55", "66", "77", "88", "99"];
 
 console.log(song1);
-var songStarted = false;
+var songStarted = false; //sync?
 
 var tick = setInterval(tick, 1000); //easy mode - too slow for decent dances
 //var tick500 = setInterval(tick500, 500); //medium/hard mode 
 var tick200 = setInterval(tick200, 200);
-var ticker = 0;
+var ticker = 0;  //sync?
 
-var song;
+var song;     //sync?
 var s_str1;
 var s_str2;
 
@@ -205,7 +205,7 @@ var songAhead;
 var s_str1_Ahead;
 var s_str2_Ahead;
 
-var boxTouched = ["9", "9"];
+var boxTouched = ["9", "9"];          
 var hit = false; //did the user hit the box?
 var hitCounter = 0;
 
@@ -220,12 +220,14 @@ var newRot1, newRot2;
 var oldRot3, oldRot3 = "0 0 0";
 var newRot3, newRot4;
 
+//var DBRead = false;
 //
 //runs every second
 function tick(){
 	
 	if (songStarted == true){
 	
+		updateVarsDB(); //updates database
 		//show box to hit
 		document.querySelector('#tempDisplay').setAttribute('n-text', "text:" + song1[(ticker)]);
 		
@@ -265,24 +267,28 @@ function tick(){
 		if (ticker >= (song1.length-1)){
 			songStarted = false;
 			ticker = 0;
+			updateVarsDB(); //updates db
+			
 			console.log("song ended");
 			console.log("You hit " + hitCounter + "/" + (song1.length-1) + " moves");
-			readDatabase(); //must read old HS before update
+			//readHighscoreDB(); //must read old HS before update
 			
+			//do while (DBRead == true){
 			console.log(hitCounter);
 			document.querySelector('#statsDisplay').setAttribute('n-text', "text:" + "You hit " + hitCounter + "/" + (song1.length-1) + " moves");
 		
 			if (hitCounter > highScore){
 				console.log("highscore!");
-				document.querySelector('#statsDisplay2').setAttribute('n-text', "text: Congrats! You set a new high score of " + highScore);
-				updateDatabase(); //update database iff highscore
+				document.querySelector('#statsDisplay2').setAttribute('n-text', "text: Congrats! You set a new high score of " + hitCounter);
+				updateHighscoreDB(); //update database iff highscore
+				highScore = hitCounter; //updates local highscore
 			} else {
 			
 				document.querySelector('#statsDisplay2').setAttribute('n-text', "text: Your highscore is " + highScore);
 			
 			}
-			
-			
+				//DBRead = false; //loops only once
+			//}//loop
 		}
 	
 	}
@@ -293,53 +299,6 @@ function tick(){
 
 //0.5s tick
 function tick500(){
-
-	if (songStarted == true){
-	
-		//show box to hit
-		document.querySelector('#tempDisplay').setAttribute('n-text', "text:" + song1[(ticker)]);
-		
-		//reset some variables
-		hit = false; //sets hit to false
-		counterUpdated = false;
-		
-		//stores current part of song?
-		song = song1[ticker];
-		document.querySelector('#handDisplay1').emit('nextMove');
-		document.querySelector('#handDisplay2').emit('nextMove');
-		//songAhead = song1[ticker]; //remove this possibly
-		s_str1 = song.substring(0,1);
-		s_str2 = song.substring(1);
-		console.log(s_str1 + " | "  + s_str2);
-
-		//console.log(song1[ticker]);
-		//console.log(ticker + " | " + (song1.length-1));
-	
-		//parse array input (where number represent boxes to hit)
-		
-		
-		
-		//set all colours to normal
-		//blank();
-		getBoxNumbers(); //makes code cleaner
-		getBoxNumbers2(); //remove this later on
-	
-		ticker++;
-	
-		//console.log("ticker: " + ticker + " | songlength-1 : " + (song1.length-1));
-	
-		if (ticker >= (song1.length-1)){
-			songStarted = false;
-			ticker = 0;
-			console.log("song ended");
-			console.log("You hit " + hitCounter + "/" + (song1.length-1) + " moves");
-			
-			document.querySelector('#statsDisplay').setAttribute('n-text', "text:" + "You hit " + hitCounter + "/" + (song1.length-1) + " moves");
-			
-		}
-	
-	}	
-
 }
 
 function tick200(){
@@ -607,7 +566,8 @@ function getBoxNumbers2(){
 	//
 }
 
-function updateDatabase(){
+//updates highscore along with name to firebase
+function updateHighscoreDB(){
 	
 	fbDanceRef.child("users").once('value', function (snapshot) {
 			console.log('Snapshot function worked!');
@@ -635,12 +595,19 @@ function updateDatabase(){
 	//fbDanceRef.child("users").child(username).child('Score').update(hitCounter);
 	fbDanceRef.child("users").child(username).child('Score').set(hitCounter); //updates database
 	
-	
-	
-	
 }
 
-function readDatabase(){
+//updates specific variables to DB
+function updateVarsDB(){
+
+	fbDanceRef.child("gameStart").set(songStarted); //updates database
+	fbDanceRef.child("ticker").set(ticker);
+	//fbDanceRef.child("song").set(song);
+
+}
+
+//reads highscore from DB
+function readHighscoreDB(){
 
 	fbDanceRef.child("users").child(username).child('Score').on("value", function(snapshot) {
 		highScore = snapshot.val();
@@ -649,6 +616,18 @@ function readDatabase(){
 
 }
 
+
+//reads specific vars from DB
+function readVarsDB(){
+	
+	fbDanceRef.child("gameStart").on("value", function(snapshot) {
+		songStarted = snapshot.val();
+	});
+	fbDanceRef.child("ticker").on("value", function(snapshot){
+		ticker = snapshot.val();
+	});
+	
+}
 
 AFRAME.registerComponent('hancol',
                          {
@@ -788,6 +767,10 @@ startBox.position.set(0, 1, 3);
 sim.scene.add(startBox);
 
 startBox.addEventListener('cursordown', function(){
+
+	readVarsDB(); //checks database
+	
+	
 
 	if (songStarted == false){
 		console.log("start song");
